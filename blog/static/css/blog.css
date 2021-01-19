@@ -1,0 +1,8 @@
+body{
+    background-color: oldlace;
+}
+
+h1 a , h2 a{
+    color: darkblue;
+    font-family: 'lobster';
+}
