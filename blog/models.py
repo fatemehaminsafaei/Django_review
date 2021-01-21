@@ -9,6 +9,15 @@ class Post(models.Model):
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
+    STATUS_CHOICES = (
+        ('d', 'Draft'),
+        ('p', 'Publish'),
+    )
+    status = models.CharField(choices=STATUS_CHOICES, default='d', max_length=1)
+    thumbnail = models.ImageField(upload_to="images", blank=True, null=True)
+
+    class Meta:
+        ordering =['published_date']
 
     def publish(self):
         self.published_date = timezone.now()
@@ -16,3 +25,4 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
