@@ -17,7 +17,7 @@ class Post(models.Model):
     thumbnail = models.ImageField(upload_to="images", blank=True, null=True)
 
     class Meta:
-        ordering =['published_date']
+        ordering = ['-published_date']
 
     def publish(self):
         self.published_date = timezone.now()
@@ -25,4 +25,12 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    @property
+    def age(self):
+        try:
+            age = timezone.now().year - self.publish_date.year
+        except AttributeError:
+            age = 'unknown'
+        return age
 
