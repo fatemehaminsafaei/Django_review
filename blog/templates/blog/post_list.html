@@ -1,46 +1,19 @@
-{% load static %}
-<html>
+<!DOCTYPE html>
+<html lang="en">
+{#{% load i18n %}#}
 <head>
-
-    <title>Django blog</title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
+
 <body>
-<div class="page-header">
-    <h1><a href="/">My Django Blog</a></h1>
-</div>
-
-<div class="content container">
-    <div class="row">
-        <div class="col-md-8">
-            {% for post in posts %}
-                <div class="post">
-                    <div class="date">
-                        <p>published: {{ post.published_date }}</p>
-                    </div>
-                    <h2><a href="">{{ post.title }}</a></h2>
-                    <p>{{ post.text|linebreaksbr }}</p>
-                </div>
-            {% endfor %}
-        </div>
-    </div>
-</div>
-
-<div>
-    <p>published: january 19,2021</p>
-    <h2><a href="">My first post</a></h2>
-    <p> This is my first post, I wanna write about django</p>
-</div>
-
-<div>
-    <p>published: january 19,2021</p>
-    <h2><a href="">My second post</a></h2>
-    <p> Django is a high-level Python Web framework that encourages rapid development and clean, pragmatic design. Built
-        by experienced developers, it takes care of much of the hassle of Web development, so you can focus on writing
-        your app without needing to reinvent the wheel</p>
-</div>
+{#<h1>{% translate "Posts" %}</h1>#}
+<ul>
+{% for post in object_list %}
+    <li>
+        <a href="{{post.slug}}/" >{{post.title}}, {{post.publish_date}}, {{post.writer}}</a>
+    </li>
+{% endfor %}
+</ul>
 </body>
 </html>

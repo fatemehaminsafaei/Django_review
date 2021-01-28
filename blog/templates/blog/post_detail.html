@@ -1,0 +1,17 @@
+{% load blog_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>
+    {{ object.title|cut:"t" }}
+</h1>
+{{ object.title|length}}
+{{ object.title|lower}}
+{{object.content}}
+</body>
+</html>

@@ -1,14 +1,18 @@
-from django.shortcuts import render
-from django.utils import timezone
-from django.views import View
-from blog.models import Post
-
-# class PostList(View):
-def post_list(request):
-    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    return render(request, 'blog/post_list.html', {})
+from django.views.generic import View, ListView, DetailView
+from .models import Post
 
 
+class PostsList(ListView):
+    model = Post
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
 
 
+class Detail(DetailView):
+    model = Post
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
