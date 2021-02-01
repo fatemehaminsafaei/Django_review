@@ -10,4 +10,8 @@ def cut(value, arg):
 def lower(value):
     return value.lower()
 
-
+@register.simple_tag
+def numposts(obs, word):
+    if len(obs) > 1 or len(obs) == 0:
+        word = word + 's'
+    return ' '.join([str(len(obs)), word])

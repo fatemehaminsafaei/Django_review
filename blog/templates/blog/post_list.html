@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-{#{% load i18n %}#}
+{% load blog_tags %}
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 
 <body>
-{#<h1>{% translate "Posts" %}</h1>#}
+<h1>Posts</h1>
 <ul>
 {% for post in object_list %}
     <li>
-        <a href="{{post.slug}}/" >{{post.title}}, {{post.publish_date}}, {{post.writer}}</a>
+        <a href="{{post.slug}}/" >{{post.title}}, {{post.publish_date}}, {{post.writer.firt_name}}</a>
     </li>
 {% endfor %}
 </ul>
+<p> there are {% numposts object_list "post" %} in this weblog.</p>
 </body>
 </html>

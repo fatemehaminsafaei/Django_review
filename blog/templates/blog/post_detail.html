@@ -8,10 +8,12 @@
 </head>
 <body>
 <h1>
-    {{ object.title|cut:"t" }}
+    {{ object.title|cut:" " }}
 </h1>
-{{ object.title|length}}
-{{ object.title|lower}}
+
 {{object.content}}
+<p>
+<a href = '{% url "writer_detail" object.writer.id %}' > More posts by {{ object.writer.first_name }}</a>
+</p>
 </body>
 </html>
